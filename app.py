@@ -46,14 +46,15 @@ password = st.text_input("パスワード", type="password")
 department = st.selectbox("部署", ["フロントエンド", "バックエンド", "インフラ"])
 
 if st.button("登録"):
-    # acount.csvに保存（文字化け対策: utf-8-sig推奨）
+    # acount.csvに保存（エンコード: shift_jis）
     with open(acount_csv, "a", newline="", encoding="shift_jis") as f:
         writer = csv.writer(f)
         writer.writerow([name, email, password, department])
     st.success("ユーザー情報を登録しました")
-    # セッションに保存して進捗画面へ
     st.session_state.name = name
     st.session_state.email = email
     st.session_state.password = password
     st.session_state.department = department
-    st.switch_page("progress")
+    # st.switch_page("progress")
+    st.page_link("pages/progress.py", label="進捗ページ")
+    st.page_link("pages/about.py", label="ユーザー一覧")

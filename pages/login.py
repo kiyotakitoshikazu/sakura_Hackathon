@@ -27,5 +27,5 @@ if "password" not in st.session_state:
 ### セッションの初期化 ###
 ### 入力UI ###
 st.session_state.section=st.selectbox("勤務状態",["勤務中","休日","休憩中",""])
-
+st.session_state.password=st.text_input("パスワード",type="password")
 ### 入力UI ###
